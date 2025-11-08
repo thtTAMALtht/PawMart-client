@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #4388C9;
+  --color-secondary: #F76100;
+}
+
+*{
+  font-family: "Roboto", sans-serif;
+}
+
+
+/* Custom button override */
+.btn-primary {
+    @apply bg-linear-to-r from-[#2479C9] to-[#4388C9] border-none text-white;
+  }
+  .btn-primary:hover {
+    @apply opacity-90;
+  }
+.btn-secondary {
+    @apply bg-linear-to-r from-[#dd6c20] to-[#F76100] border-none text-white;
+  }
+  .btn-secondary:hover {
+    @apply opacity-90;
+  }
+
+
+/* ul li:hover{
+    color: #43c94a;
+    transition: all linear .4s;
+} */
+
+/* a.active{
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, #F76100, #4388C9)1;
+  background-color: #4388C9;
+  background-clip: text;
+  color: transparent;
+} */

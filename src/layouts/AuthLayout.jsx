@@ -1,0 +1,24 @@
+
+import Navbar from "../components/navbar/Navbar";
+import { Outlet } from "react-router";
+import Footer from "../components/footer/Footer";
+import { Toaster } from 'react-hot-toast';
+
+const AuthLayout = () => {
+  return (
+    <div>
+      <header>
+        <Navbar></Navbar>
+      </header>
+      <main>
+        <Outlet></Outlet>
+      </main>
+      <footer>
+        <Footer></Footer>
+      </footer>
+      <Toaster />
+    </div>
+  );
+};
+
+export default AuthLayout;
