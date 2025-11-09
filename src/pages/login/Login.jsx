@@ -1,10 +1,13 @@
 import { Link, useNavigate } from "react-router";
 import useAuthContext from "../../hooks/useAuthContext";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
 
  const {googleSignIn,setLoading} = useAuthContext();
+ const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
@@ -21,6 +24,16 @@ const Login = () => {
   };
 
 
+
+
+
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+
+
   return (
     <div className="flex justify-center mt-16">
       <div className=" card bg-base-100 w-full border border-gray-200 max-w-2xl shrink-0 shadow-md">
@@ -35,13 +48,34 @@ const Login = () => {
                 className="outline w-full p-2 rounded-sm outline-gray-200 placeholder-gray-400"
                 placeholder="Email"
               />
-              <label className="label text-lg font-semibold">Password</label>
-              <input
-                type="password"
-                name="password"
-                className="outline w-full p-2 rounded-sm outline-gray-200 placeholder-gray-400"
-                placeholder="Password"
-              />
+              <div className="relative">
+                <label className="label text-sm font-semibold mb-3">
+                  Password
+                </label>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="text-[16px] outline w-full p-2 rounded-sm outline-gray-200 placeholder-gray-400"
+                  placeholder="Password"
+                />
+                {showPassword ? (
+                  <button
+                    onClick={handleShowPassword}
+                    type="button"
+                    className="btn btn-sm absolute right-2 top-9"
+                  >
+                    <FaEyeSlash />
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleShowPassword}
+                    type="button"
+                    className="btn btn-sm absolute right-2 top-9"
+                  >
+                    <FaEye />
+                  </button>
+                )}
+              </div>
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>

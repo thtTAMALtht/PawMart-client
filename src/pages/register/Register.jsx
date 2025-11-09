@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router";
 import useAuthContext from "../../hooks/useAuthContext";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 
 const Register = () => {
   const {googleSignIn,createUser,setLoading} = useAuthContext();
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
@@ -71,7 +73,9 @@ const handleRegister = (e) => {
       });
   };
 
-
+ const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
 
 
@@ -107,13 +111,32 @@ const handleRegister = (e) => {
                 placeholder="Photo URL"
               />
 
-              <label className="label text-lg font-semibold">Password</label>
-              <input
-                type="password"
-                name="password"
-                className="outline w-full p-2 rounded-sm outline-gray-200 placeholder-gray-400"
-                placeholder="Password"
-              />
+              <div className="relative">
+                <label className="label text-sm font-semibold">Password</label>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="text-[16px] outline w-full p-2 rounded-sm outline-gray-200 placeholder-gray-400"
+                  placeholder="Password"
+                />
+                {showPassword ? (
+                  <button
+                    onClick={handleShowPassword}
+                    type="button"
+                    className="btn btn-sm absolute right-2 top-6"
+                  >
+                    <FaEyeSlash />
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleShowPassword}
+                    type="button"
+                    className="btn btn-sm absolute right-2 top-6"
+                  >
+                    <FaEye />
+                  </button>
+                )}
+              </div>
               <button className="btn btn-secondary shadow-none mt-4 text-white">
                 Register
               </button>
