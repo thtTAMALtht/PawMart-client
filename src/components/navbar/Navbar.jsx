@@ -1,12 +1,14 @@
 import { Link, NavLink } from "react-router";
-import LogoImg from "../../assets/logo.jpg";
+import LogoImg from "../../assets/logo.png";
 import Container from "../container/Container";
 import { MdOutlineMenu } from "react-icons/md";
 import useAuthContext from "../../hooks/useAuthContext";
 import toast from "react-hot-toast";
+import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
+import { RingLoader } from "react-spinners";
 
 const Navbar = () => {
-  const { user, signOutUser } = useAuthContext();
+  const { user, signOutUser, loading } = useAuthContext();
 
   const links = (
     <>
@@ -42,8 +44,11 @@ const Navbar = () => {
       });
   };
 
+  if (loading) {
+    return LoadingSpinner;
+  }
   return (
-    <div className="shadow ">
+    <div className="shadow">
       <Container>
         <div className="navbar">
           <div className="navbar-start">
@@ -76,50 +81,61 @@ const Navbar = () => {
             <ul className="flex gap-6 text-lg font-medium">{links}</ul>
           </div>
 
-          {user ? (
-            <div className="navbar-end flex relative gap-2 dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar mr-8"
-              >
-                <div className="w-10 rounded-full ">
-                  <img
-                  title={user.displayName}
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  />
-                </div>
-              </div>
-              <ul
-                tabIndex="-1"
-                className="cursor-pointer dropdown-content bg-base-100 rounded-box z-1 mt-32 w-24 p-2 shadow text-center space-y-3"
-              >
-                <li>
-                  <Link className="justify-between">Profile</Link>
-                </li>
-                <li>
-                  <button className="cursor-pointer" onClick={handleSignOut}>
-                    SignOut
-                  </button>
-                </li>
-              </ul>
-            </div>
+          {loading ? (
+            <RingLoader size={30} color="#4388C9"></RingLoader>
           ) : (
-            <div className="navbar-end flex gap-2">
-              <Link
-                to="/auth/login"
-                className="btn btn-sm shadow-none btn-primary"
-              >
-                Login
-              </Link>
-              <Link
-                to="/auth/register"
-                className="btn btn-sm shadow-none btn-secondary"
-              >
-                Register
-              </Link>
-            </div>
+            <>
+              {user ? (
+                <div className="navbar-end flex relative gap-2 dropdown dropdown-end">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar mr-16"
+                  >
+                    <div className="w-10 rounded-full ">
+                      <img
+                        title={user.displayName}
+                        alt={user.displayName}
+                        src={user.photoURL}
+                      />
+                    </div>
+                  </div>
+                  <ul
+                    tabIndex="-1"
+                    className="cursor-pointer dropdown-content bg-base-200 rounded-box z-100 mt-40 w-44 p-2 shadow text-center space-y-3 border border-[#4388C9]"
+                  >
+                    <li>
+                      <p className="text-sm">{user.displayName}</p>
+                      <p className="text-sm">{user.email}</p>
+                    </li>
+                    <li>
+                      <hr class="h-px bg-[#4388C9] border-0" />
+                      <button
+                        className="cursor-pointer btn btn-sm btn-secondary mt-2"
+                        onClick={handleSignOut}
+                      >
+                        SignOut
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <div className="navbar-end flex gap-2">
+                  <Link
+                    to="/auth/login"
+                    className="btn btn-sm shadow-none btn-primary"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/auth/register"
+                    className="btn btn-sm shadow-none btn-secondary"
+                  >
+                    Register
+                  </Link>
+                </div>
+              )}
+            </>
           )}
         </div>
       </Container>

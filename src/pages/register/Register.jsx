@@ -81,7 +81,7 @@ const handleRegister = (e) => {
 
 
   return (
-    <div className="flex justify-center mt-16">
+    <div className="flex justify-center py-24">
       <div className=" card bg-base-100 w-full border border-gray-200 max-w-2xl shrink-0 shadow-2xl">
         <div className="card-body">
           <h1 className="text-5xl font-bold text-center py-2 text-secondary">Register now!</h1>
@@ -112,7 +112,7 @@ const handleRegister = (e) => {
               />
 
               <div className="relative">
-                <label className="label text-sm font-semibold">Password</label>
+                <label className="label text-lg font-semibold">Password</label>
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
@@ -131,7 +131,7 @@ const handleRegister = (e) => {
                   <button
                     onClick={handleShowPassword}
                     type="button"
-                    className="btn btn-sm absolute right-2 top-6"
+                    className="btn btn-sm absolute right-2 top-8"
                   >
                     <FaEye />
                   </button>

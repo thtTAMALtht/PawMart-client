@@ -58,7 +58,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center mt-16">
+    <div className="flex justify-center py-24">
       <div className=" card bg-base-100 w-full border border-gray-200 max-w-2xl shrink-0 shadow-md">
         <div className="card-body">
           <h1 className="text-5xl font-bold text-primary text-center py-2">
@@ -74,7 +74,7 @@ const Login = () => {
                 placeholder="Email"
               />
               <div className="relative">
-                <label className="label text-sm font-semibold mb-3">
+                <label className="label text-lg font-semibold mb-3">
                   Password
                 </label>
                 <input
@@ -95,7 +95,7 @@ const Login = () => {
                   <button
                     onClick={handleShowPassword}
                     type="button"
-                    className="btn btn-sm absolute right-2 top-9"
+                    className="btn btn-sm absolute right-2 top-11"
                   >
                     <FaEye />
                   </button>
@@ -107,7 +107,7 @@ const Login = () => {
               <button className="btn btn-primary shadow-none text-white mt-4">
                 Login
               </button>
-              <hr className="border-0 `h-[1px]` bg-gray-200" />
+              <hr class="h-px bg-gray-200 border-0"/>
               <button
                 onClick={handleGoogleSignIn}
                 type="button"

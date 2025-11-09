@@ -2,7 +2,7 @@ import Container from "../../components/container/Container";
 import { Link } from "react-router";
 import { FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import LogoImg from "../../assets/logo.jpg";
+import LogoImg from "../../assets/logo.png";
 
 const Footer = () => {
   return (
@@ -11,6 +11,7 @@ const Footer = () => {
         <footer className="grid grid-cols-12 lg:gap-12 py-8 space-y-12 lg:space-y-0 text-center">
           <div className="col-span-12 lg:col-span-5 space-y-4">
             <Link className="group flex items-center gap-2">
+              <img src={LogoImg} alt="logo" className="w-14" />
               <p className="text-3xl font-extrabold italic text-[#F76100] group-hover:text-[#4388C9]">
                 Paw
                 <span className="text-[#4388C9] group-hover:text-[#F76100]">

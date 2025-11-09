@@ -40,7 +40,8 @@ const PetHeroes = () => {
           {heroes.map((hero) => (
             <div
               key={hero.id}
-              className="p-5 rounded-xl bg-white shadow hover:shadow-lg hover:scale-103 transition-transform duration-800 border border-gray-100"
+              className="p-5 rounded-xl bg-white shadow hover:shadow-lg hover:scale-103 transition-transform duration-800 border border-gray-100 hover:shadow-[#dd6c20]/10"
+              
             >
               <img
                 src={hero.img}
@@ -48,7 +49,7 @@ const PetHeroes = () => {
                 className="w-full h-60 object-cover rounded-lg"
               />
               <h3 className="font-bold text-xl mt-4 text-gray-800">
-                {hero.pet} & {hero.hero}
+                <span className="text-[#dd6c20]">{hero.pet}</span> & <span className="text-primary">{hero.hero}</span>
               </h3>
               <p className="text-gray-600 text-md leading-relaxed mt-3">
                 {hero.story}

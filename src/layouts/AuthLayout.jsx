@@ -1,10 +1,15 @@
-
 import Navbar from "../components/navbar/Navbar";
 import { Outlet } from "react-router";
 import Footer from "../components/footer/Footer";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
+import LoadingSpinner from "../components/loadingSpinner/LoadingSpinner";
+import useAuthContext from "../hooks/useAuthContext";
 
 const AuthLayout = () => {
+  const { loading } = useAuthContext();
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   return (
     <div>
       <header>

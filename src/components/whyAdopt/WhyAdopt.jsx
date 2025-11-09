@@ -16,7 +16,7 @@ const WhyAdopt = () => {
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="p-6 bg-white rounded-xl shadow hover:shadow-xl ">
+          <div className="p-6 bg-white rounded-xl shadow hover:shadow-xl hover:shadow-[#dd6c20]/10">
             <FaPaw className="text-5xl mx-auto text-[#dd6c20]" />
             <h3 className="font-bold text-xl mt-4">Save a Life</h3>
             <p className="text-gray-600 mt-2 text-md">
@@ -24,7 +24,7 @@ const WhyAdopt = () => {
             </p>
           </div>
 
-          <div className="p-6 bg-white rounded-xl shadow hover:shadow-xl transition">
+          <div className="p-6 bg-white rounded-xl shadow hover:shadow-xl transition hover:shadow-[#dd6c20]/10">
             <FaHandHoldingHeart className="text-5xl mx-auto text-[#4388C9]" />
             <h3 className="font-bold text-xl mt-4">End Pet Homelessness</h3>
             <p className="text-gray-600 mt-2 text-md">
@@ -32,7 +32,7 @@ const WhyAdopt = () => {
             </p>
           </div>
 
-          <div className="p-6 bg-white rounded-xl shadow hover:shadow-xl transition">
+          <div className="p-6 bg-white rounded-xl shadow hover:shadow-xl transition hover:shadow-[#dd6c20]/10">
             <FaSmileBeam className="text-5xl mx-auto text-[#dd6c20]" />
             <h3 className="font-bold text-xl mt-4">Unconditional Love</h3>
             <p className="text-gray-600 mt-2 text-md">

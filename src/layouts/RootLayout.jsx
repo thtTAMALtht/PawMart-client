@@ -2,8 +2,14 @@ import Navbar from "../components/navbar/Navbar";
 import { Outlet } from "react-router";
 import Footer from "../components/footer/Footer";
 import { Toaster } from "react-hot-toast";
+import useAuthContext from "../hooks/useAuthContext";
+import LoadingSpinner from "../components/loadingSpinner/LoadingSpinner";
 
 const RootLayout = () => {
+  const { loading } = useAuthContext();
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   return (
     <div className="flex flex-col min-h-screen">
       <header>
