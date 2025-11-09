@@ -34,10 +34,10 @@
     transition: all linear .4s;
 } */
 
-/* a.active{
+a.active{
   border-bottom: 2px solid transparent;
   border-image: linear-gradient(to right, #F76100, #4388C9)1;
   background-color: #4388C9;
   background-clip: text;
   color: transparent;
-} */
+}

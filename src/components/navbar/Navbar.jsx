@@ -6,7 +6,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const { user,signOutUser } = useAuthContext();
+  const { user, signOutUser } = useAuthContext();
 
   const links = (
     <>
@@ -14,21 +14,25 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink>Pets & Supplies</NavLink>
+        <NavLink to="/pets-supplies">Pets & Supplies</NavLink>
       </li>
-      <li>
-        <NavLink>Add Listing</NavLink>
-      </li>
-      <li>
-        <NavLink>My Listing</NavLink>
-      </li>
-      <li>
-        <NavLink>My Orders</NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/addListing">Add Listing</NavLink>
+          </li>
+          <li>
+            <NavLink to="/myListing">My Listing</NavLink>
+          </li>
+          <li>
+            <NavLink to="/myOrders">My Orders</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
-    const handleSignOut = () => {
+  const handleSignOut = () => {
     signOutUser()
       .then(() => {
         toast.success("SignOut successful");
@@ -38,11 +42,10 @@ const Navbar = () => {
       });
   };
 
-
   return (
     <div className="shadow ">
       <Container>
-        <div className="navbar border">
+        <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -59,7 +62,7 @@ const Navbar = () => {
                 {links}
               </ul>
             </div>
-            <Link className="group flex items-center justify-between gap-2">
+            <Link className="group flex items-center gap-2">
               <img src={LogoImg} alt="logo" className="w-14" />
               <p className="text-3xl font-extrabold italic text-[#F76100] group-hover:text-[#4388C9]">
                 Paw
@@ -82,6 +85,7 @@ const Navbar = () => {
               >
                 <div className="w-10 rounded-full ">
                   <img
+                  title={user.displayName}
                     alt="Tailwind CSS Navbar component"
                     src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
                   />
@@ -95,7 +99,9 @@ const Navbar = () => {
                   <Link className="justify-between">Profile</Link>
                 </li>
                 <li>
-                  <button className="cursor-pointer" onClick={handleSignOut}>SignOut</button>
+                  <button className="cursor-pointer" onClick={handleSignOut}>
+                    SignOut
+                  </button>
                 </li>
               </ul>
             </div>
