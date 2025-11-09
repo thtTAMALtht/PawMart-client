@@ -1,36 +1,51 @@
-
 import { Link, useNavigate } from "react-router";
 import useAuthContext from "../../hooks/useAuthContext";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+import useAxios from "../../hooks/useAxios";
 
 const Register = () => {
-  const {googleSignIn,createUser,setLoading} = useAuthContext();
+  const { googleSignIn, createUser, setLoading, updateUserProfile, setUser } =
+    useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const axiosHook = useAxios();
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-    .then((result) => {
-      console.log(result.user);
-      setLoading(false);
-      toast.success("Google SignIn Successful");
-      navigate("/");
-    })
-    .catch((error) => {
-      toast.error(error.message);
-    });
+      .then((result) => {
+        const userInfo = {
+          name: result.user.displayName,
+          email: result.user.email,
+          image: result.user.photoURL,
+        };
+        axiosHook
+          .post("/users", userInfo)
+          .then((data) => {
+            console.log(data.data);
+            if (data.data.insertedId) {
+              toast.success("Google SignIn Successful");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        setLoading(false);
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
-
-const handleRegister = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
-    
+
     const casePattern = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
     if (!name) {
       toast.error("Please enter your name");
@@ -60,31 +75,58 @@ const handleRegister = (e) => {
     }
     createUser(email, password)
       .then((result) => {
+        setLoading(false);
         const user = result.user;
-        toast.success("SignUp successful")
-        setLoading(false)
-        e.target.reset();
-        navigate("/");
+        const profile = {
+          displayName: name,
+          photoURL: photo,
+        };
+        updateUserProfile(profile)
+          .then(() => {
+            setLoading(false);
+            setUser({ ...user, displayName: name, photoURL: photo });
+            const userInfo ={
+              name : user.displayName,
+              email : user.email,
+              image : user.photoURL,
+            }
+            axiosHook.post("/users",userInfo)
+            .then(data=>{
+              if(data.data.insertedId){
+                toast.success("SignUp successful");
+                navigate("/");
+              };
+            })
+            .catch(error=>{
+              toast.error(error.message)
+            })
+          
+            e.target.reset();
+          })
+          .catch((err) => {
+            toast.error("Error!!!", err.message);
+            setUser(user);
+          });
+        
       })
       .catch((err) => {
-        if(err.code==="auth/email-already-in-use"){
-          toast.error("Your Email already in-use")
+        if (err.code === "auth/email-already-in-use") {
+          toast.error("Your Email already in-use");
         }
       });
   };
 
- const handleShowPassword = () => {
+  const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
-
-
-
 
   return (
     <div className="flex justify-center py-24">
       <div className=" card bg-base-100 w-full border border-gray-200 max-w-2xl shrink-0 shadow-2xl">
         <div className="card-body">
-          <h1 className="text-5xl font-bold text-center py-2 text-secondary">Register now!</h1>
+          <h1 className="text-5xl font-bold text-center py-2 text-secondary">
+            Register now!
+          </h1>
           <form onSubmit={handleRegister}>
             <fieldset className="fieldset space-y-2 text-lg">
               <label className="label text-lg font-semibold">Name</label>
@@ -154,7 +196,7 @@ const handleRegister = (e) => {
                   Alternative option ╰┈➤
                 </h3>
                 <button
-                onClick={handleGoogleSignIn}
+                  onClick={handleGoogleSignIn}
                   type="button"
                   className="btn mt-3 md:mt-0 w-full md:w-fit bg-white text-black border-[#4388C9]"
                 >
@@ -188,7 +230,6 @@ const handleRegister = (e) => {
                   Login with Google
                 </button>
               </div>
-              
             </fieldset>
           </form>
         </div>

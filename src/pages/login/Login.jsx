@@ -1,22 +1,37 @@
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useAuthContext from "../../hooks/useAuthContext";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import useAxios from "../../hooks/useAxios";
 
 const Login = () => {
   const { googleSignIn, signInUser, setLoading } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
+  const axiosHook = useAxios();
 
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
-        console.log(result.user);
-        setLoading(false);
-        toast.success("Google SignIn Successful");
-        navigate("/");
+        const userInfo = {
+          name: result.user.displayName,
+          email: result.user.email,
+          image: result.user.photoURL,
+        };
+        axiosHook
+          .post("/users", userInfo)
+          .then((data) => {
+            console.log(data.data);
+            if (data.data.insertedId) {
+              toast.success("Google SignIn Successful");
+              navigate("/");
+            }
+          })
+          .catch((error) => {
+            toast.error(error.message);
+            setLoading(false);
+          });
       })
       .catch((error) => {
         toast.error(error.message);
@@ -27,35 +42,42 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSignIn = (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
 
-    if (!email) {
-      toast.error("Please enter your email");
-      return;
-    }
 
-    signInUser(email, password)
-      .then(() => {
-        setLoading(false);
-        toast.success("Login Successful");
-        e.target.reset();
-        navigate(location.state || "/");
-      })
-      .catch((error) => {
-        if (error.code === "auth/invalid-credential") {
-          toast.error("Email or password doesn't match");
-        } else if (error.code === "auth/invalid-email") {
-          toast.error("Please enter your valid email");
-        } else if (error.code === "auth/missing-password") {
-          toast.error("Please enter your valid password");
-        } else {
-          toast.error("Something went wrong! Try again later");
-        }
-      });
-  };
+const handleSignIn = (e) => {
+  e.preventDefault();
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+
+  if (!email) {
+    toast.error("Please enter your email");
+    return;
+  }
+  if (!password) {
+    toast.error("Please enter your valid password");
+    return;
+  }
+
+  signInUser(email, password)
+    .then(() => {
+      setLoading(false);
+      toast.success("Login Successful");
+    })
+    .catch((error) => {
+      setLoading(false);
+      console.log(error.message);
+
+      if (error.code === "auth/invalid-credential") {
+        toast.error("Email or password doesn't match");
+      } else if (error.code === "auth/invalid-email") {
+        toast.error("Please enter a valid email");
+      } else if (error.code === "auth/missing-password") {
+        toast.error("Please enter your valid password");
+      } else {
+        toast.error("Something went wrong! Try again later");
+      }
+    });
+};
 
   return (
     <div className="flex justify-center py-24">
@@ -107,7 +129,7 @@ const Login = () => {
               <button className="btn btn-primary shadow-none text-white mt-4">
                 Login
               </button>
-              <hr class="h-px bg-gray-200 border-0"/>
+              <hr className="h-px bg-gray-200 border-0" />
               <button
                 onClick={handleGoogleSignIn}
                 type="button"

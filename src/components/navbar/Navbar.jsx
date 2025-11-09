@@ -102,16 +102,16 @@ const Navbar = () => {
                   </div>
                   <ul
                     tabIndex="-1"
-                    className="cursor-pointer dropdown-content bg-base-200 rounded-box z-100 mt-40 w-44 p-2 shadow text-center space-y-3 border border-[#4388C9]"
+                    className="cursor-pointer dropdown-content bg-base-200 rounded-box z-100 mt-40 w-48 p-2 shadow text-center  space-y-3 border border-[#4388C9]"
                   >
                     <li>
-                      <p className="text-sm">{user.displayName}</p>
-                      <p className="text-sm">{user.email}</p>
+                      
+                      <p className="text-sm break-all">Email : {user.email}</p>
                     </li>
                     <li>
-                      <hr class="h-px bg-[#4388C9] border-0" />
+                      <hr className="h-px bg-[#4388C9] border-0" />
                       <button
-                        className="cursor-pointer btn btn-sm btn-secondary mt-2"
+                        className="cursor-pointer  btn btn-sm btn-secondary mt-2"
                         onClick={handleSignOut}
                       >
                         SignOut
