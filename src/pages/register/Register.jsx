@@ -2,9 +2,10 @@
 import { Link, useNavigate } from "react-router";
 import useAuthContext from "../../hooks/useAuthContext";
 import toast from "react-hot-toast";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const {googleSignIn,setLoading} = useAuthContext();
+  const {googleSignIn,createUser,setLoading} = useAuthContext();
   const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
@@ -21,12 +22,66 @@ const Register = () => {
   };
 
 
+const handleRegister = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const photo = e.target.photo.value;
+    const password = e.target.password.value;
+    
+    const casePattern = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
+    if (!name) {
+      toast.error("Please enter your name");
+      return;
+    }
+    if (!email) {
+      toast.error("Please enter your email");
+      return;
+    }
+    if (!photo) {
+      toast.error("Please enter your photo url");
+      return;
+    }
+    if (!password) {
+      toast.error("Please enter valid password");
+      return;
+    }
+    if (!casePattern.test(password)) {
+      toast.error(
+        "Password must contain at least one uppercase and one lowercase letter."
+      );
+      return;
+    }
+    if (password.length < 6) {
+      toast.error("Password should be atleast 6 characters");
+      return;
+    }
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        toast.success("SignUp successful")
+        setLoading(false)
+        e.target.reset();
+        navigate("/");
+      })
+      .catch((err) => {
+        if(err.code==="auth/email-already-in-use"){
+          toast.error("Your Email already in-use")
+        }
+      });
+  };
+
+
+
+
+
+
   return (
     <div className="flex justify-center mt-16">
       <div className=" card bg-base-100 w-full border border-gray-200 max-w-2xl shrink-0 shadow-2xl">
         <div className="card-body">
           <h1 className="text-5xl font-bold text-center py-2 text-secondary">Register now!</h1>
-          <form>
+          <form onSubmit={handleRegister}>
             <fieldset className="fieldset space-y-2">
               <label className="label text-lg font-semibold">Name</label>
               <input

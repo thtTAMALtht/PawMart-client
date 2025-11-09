@@ -3,9 +3,11 @@ import LogoImg from "../../assets/logo.jpg";
 import Container from "../container/Container";
 import { MdOutlineMenu } from "react-icons/md";
 import useAuthContext from "../../hooks/useAuthContext";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const { user } = useAuthContext();
+  const { user,signOutUser } = useAuthContext();
+
   const links = (
     <>
       <li>
@@ -26,10 +28,15 @@ const Navbar = () => {
     </>
   );
 
-const handleSignOut=()=>{
-  console.log('hihi');
-}
-
+    const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        toast.success("SignOut successful");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
 
 
   return (
@@ -88,7 +95,7 @@ const handleSignOut=()=>{
                   <Link className="justify-between">Profile</Link>
                 </li>
                 <li>
-                  <button onClick={handleSignOut}>SignOut</button>
+                  <button className="cursor-pointer" onClick={handleSignOut}>SignOut</button>
                 </li>
               </ul>
             </div>
