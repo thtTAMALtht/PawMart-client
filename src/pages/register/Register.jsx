@@ -86,7 +86,7 @@ const handleRegister = (e) => {
         <div className="card-body">
           <h1 className="text-5xl font-bold text-center py-2 text-secondary">Register now!</h1>
           <form onSubmit={handleRegister}>
-            <fieldset className="fieldset space-y-2">
+            <fieldset className="fieldset space-y-2 text-lg">
               <label className="label text-lg font-semibold">Name</label>
               <input
                 type="text"

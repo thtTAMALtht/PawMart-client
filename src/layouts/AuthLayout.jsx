@@ -16,7 +16,14 @@ const AuthLayout = () => {
       <footer>
         <Footer></Footer>
       </footer>
-      <Toaster />
+      <Toaster
+        position="top-right"
+        containerStyle={{
+          top: 80,
+          right: 20,
+          left: 20,
+        }}
+      />
     </div>
   );
 };

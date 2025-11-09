@@ -1,7 +1,7 @@
 import Navbar from "../components/navbar/Navbar";
 import { Outlet } from "react-router";
 import Footer from "../components/footer/Footer";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 
 const RootLayout = () => {
   return (
@@ -15,9 +15,15 @@ const RootLayout = () => {
       <Footer>
         <Footer></Footer>
       </Footer>
-      <Toaster />
+      <Toaster
+        position="top-right"
+        containerStyle={{
+          top: 80,
+          right: 20,
+          left: 20,
+        }}
+      />
     </div>
-    
   );
 };
 
