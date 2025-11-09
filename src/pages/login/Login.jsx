@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuthContext from "../../hooks/useAuthContext";
 import toast from "react-hot-toast";
 import { useState } from "react";
@@ -10,10 +10,14 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const axiosHook = useAxios();
+  const location = useLocation();
 
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
+        setLoading(false)
+        toast.success("Google SignIn Successful");
+        navigate(location.state || "/");
         const userInfo = {
           name: result.user.displayName,
           email: result.user.email,
@@ -22,11 +26,9 @@ const Login = () => {
         axiosHook
           .post("/users", userInfo)
           .then((data) => {
-            console.log(data.data);
-            if (data.data.insertedId) {
-              toast.success("Google SignIn Successful");
-              navigate("/");
-            }
+            // if (data.data.insertedId) {
+            //   toast.success("Google SignIn Successful");
+            // }
           })
           .catch((error) => {
             toast.error(error.message);
@@ -62,6 +64,7 @@ const handleSignIn = (e) => {
     .then(() => {
       setLoading(false);
       toast.success("Login Successful");
+      navigate(location.state || "/");
     })
     .catch((error) => {
       setLoading(false);

@@ -15,6 +15,9 @@ const Register = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
+        setLoading(false);
+      toast.success("Google SignIn Successful");
+      navigate("/");
         const userInfo = {
           name: result.user.displayName,
           email: result.user.email,
@@ -23,10 +26,10 @@ const Register = () => {
         axiosHook
           .post("/users", userInfo)
           .then((data) => {
-            console.log(data.data);
-            if (data.data.insertedId) {
-              toast.success("Google SignIn Successful");
-            }
+            // console.log(data.data);
+            // if (data.data.insertedId) {
+            //   toast.success("Google SignIn Successful");
+            // }
           })
           .catch((error) => {
             console.log(error);
@@ -85,6 +88,8 @@ const Register = () => {
           .then(() => {
             setLoading(false);
             setUser({ ...user, displayName: name, photoURL: photo });
+            setLoading(false);
+            toast.success("SignUp successful")
             const userInfo ={
               name : user.displayName,
               email : user.email,
@@ -92,16 +97,16 @@ const Register = () => {
             }
             axiosHook.post("/users",userInfo)
             .then(data=>{
-              if(data.data.insertedId){
-                toast.success("SignUp successful");
-                navigate("/");
-              };
+              // if(data.data.insertedId){
+              //   toast.success("SignUp successful");
+              // };
             })
             .catch(error=>{
               toast.error(error.message)
             })
           
             e.target.reset();
+            navigate("/");
           })
           .catch((err) => {
             toast.error("Error!!!", err.message);
