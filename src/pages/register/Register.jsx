@@ -1,6 +1,24 @@
-import { Link } from "react-router";
+
+import { Link, useNavigate } from "react-router";
+import useAuthContext from "../../hooks/useAuthContext";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const {googleSignIn,setLoading} = useAuthContext();
+  const navigate = useNavigate();
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+    .then((result) => {
+      console.log(result.user);
+      setLoading(false);
+      toast.success("Google SignIn Successful");
+      navigate("/");
+    })
+    .catch((error) => {
+      toast.error(error.message);
+    });
+  };
 
 
   return (
@@ -58,7 +76,7 @@ const Register = () => {
                   Alternative option ╰┈➤
                 </h3>
                 <button
-                
+                onClick={handleGoogleSignIn}
                   type="button"
                   className="btn mt-3 md:mt-0 w-full md:w-fit bg-white text-black border-[#4388C9]"
                 >

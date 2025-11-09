@@ -1,6 +1,25 @@
-import { Link} from "react-router";
+import { Link, useNavigate } from "react-router";
+import useAuthContext from "../../hooks/useAuthContext";
+import toast from "react-hot-toast";
 
 const Login = () => {
+
+ const {googleSignIn,setLoading} = useAuthContext();
+  const navigate = useNavigate();
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+    .then((result) => {
+      console.log(result.user);
+      setLoading(false);
+      toast.success("Google SignIn Successful");
+      navigate("/");
+    })
+    .catch((error) => {
+      toast.error(error.message);
+    });
+  };
+
 
   return (
     <div className="flex justify-center mt-16">
@@ -31,7 +50,7 @@ const Login = () => {
               </button>
               <hr className="border-0 `h-[1px]` bg-gray-200" />
               <button
-            
+              onClick={handleGoogleSignIn}
                   type="button"
                   className="btn bg-white text-black border-[#4388C9]"
                 >
