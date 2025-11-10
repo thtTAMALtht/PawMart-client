@@ -4,7 +4,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 import useAxios from "../../hooks/useAxios";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router";
-import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
+
 
 const UpdateListing = () => {
   const { user } = useAuthContext();
@@ -16,8 +16,8 @@ const UpdateListing = () => {
 
   useEffect(() => {
     
-    axiosHook.get(`/listings/${id}`).then((res) => {
-      setListing(res.data);
+    axiosHook.get(`/listings/${id}`).then((data) => {
+      setListing(data.data);
     });
   }, [id, axiosHook]);
 
@@ -30,8 +30,7 @@ const UpdateListing = () => {
     const description = e.target.description.value;
     const image = e.target.image.value;
     const dateValue = e.target.date.value;
-    const [year, month, day] = dateValue.split("-");
-    const date = `${day}-${month}-${year}`;
+    const date = new Date(dateValue);
 
     const updateData = {
       name,

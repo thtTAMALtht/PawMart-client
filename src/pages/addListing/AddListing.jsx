@@ -20,8 +20,7 @@ const AddListing = () => {
     const description = e.target.description.value;
     const image = e.target.image.value;
     const dateValue = e.target.date.value;
-    const [year, month, day] = dateValue.split("-");
-    const date = `${day}-${month}-${year}`;
+    const date = new Date(dateValue);
 
     const listingData = {
       name,

@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import PetSuppliesDetails from "../pages/petSuppliesDetails/PetSuppliesDetails";
 import LoadingSpinner from "../components/loadingSpinner/LoadingSpinner";
 import UpdateListing from "../pages/updateListing/UpdateListing";
+import CategoryFilteredProducts from "../pages/categoryFilteredProducts/CategoryFilteredProducts";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home
+      },
+      {
+        path : "/category-filtered-product/:categoryName",
+        Component :CategoryFilteredProducts
       },
       {
         path: '/pets-supplies',

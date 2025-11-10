@@ -6,6 +6,7 @@ import { Link } from "react-router";
 const PetsSupplies = () => {
   const [listings, setListings] = useState([]);
   const [filterCategory, setFilterCategory] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const axiosHook = useAxios();
 
   useEffect(() => {
@@ -15,26 +16,27 @@ const PetsSupplies = () => {
       .catch((err) => console.log(err));
   }, [axiosHook]);
 
-  let filteredListings = [];
+  let displayListings = searchResults.length > 0 ? searchResults : listings;
 
-  if (filterCategory === "") {
-    filteredListings = listings;
-  } else {
-    filteredListings = listings.filter((listing) => {
-      return listing.category === filterCategory;
-    });
+  if (filterCategory) {
+    displayListings = displayListings.filter(
+      (item) => item.category === filterCategory
+    );
   }
 
-  const handleSearch = (e)=>{
-    e.preventDefault()
-    const searchValue = e.target.search.value;
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchValue = e.target.search.value.trim();
+
+    if (!searchValue) {
+      setSearchResults([]);
+      return;
+    }
+
     axiosHook(`/search?search=${searchValue}`)
-    .then(data=>{
-      console.log(data.data);
-    })
-  }
-
-
+      .then((data) => setSearchResults(data.data))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="pt-20 px-4 md:px-8 lg:px-16 space-y-6">
@@ -91,38 +93,44 @@ const PetsSupplies = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
-        {filteredListings.map((listing) => (
-          <div
-            key={listing._id}
-            className="card bg-base-100 p-3 shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden border border-gray-100"
-          >
-            <figure>
-              <img
-                src={listing.image}
-                alt={listing.name}
-                className="h-60 w-full object-cover"
-              />
-            </figure>
-            <div className="card-body">
-              <h3 className="card-title">Name : {listing.name}</h3>
-              <p className="text-sm text-gray-500">{listing.category}</p>
-              <p className="text-sm">Location : {listing.location}</p>
-              <p className="font-semibold text-lg">
-                {listing.category === "Pets"
-                  ? "Free Adoption"
-                  : `৳${listing.price}`}
-              </p>
-              <div className="card-actions mt-2">
-                <Link
-                  to={`/pets-supplies-details/${listing._id}`}
-                  className="btn btn-primary btn-sm text-white w-full"
-                >
-                  See Details
-                </Link>
+        {displayListings.length > 0 ? (
+          displayListings.map((listing) => (
+            <div
+              key={listing._id}
+              className="card bg-base-100 p-3 shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden border border-gray-100"
+            >
+              <figure>
+                <img
+                  src={listing.image}
+                  alt={listing.name}
+                  className="h-60 w-full object-cover"
+                />
+              </figure>
+              <div className="card-body">
+                <h3 className="card-title">Name : {listing.name}</h3>
+                <p className="text-sm text-gray-500">{listing.category}</p>
+                <p className="text-sm">Location : {listing.location}</p>
+                <p className="font-semibold text-lg">
+                  {listing.category === "Pets"
+                    ? "Free Adoption"
+                    : `৳${listing.price}`}
+                </p>
+                <div className="card-actions mt-2">
+                  <Link
+                    to={`/pets-supplies-details/${listing._id}`}
+                    className="btn btn-primary text-white w-full"
+                  >
+                    See Details
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="text-center col-span-full text-gray-500 text-lg">
+            No Data Available
+          </p>
+        )}
       </div>
     </div>
   );
