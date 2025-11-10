@@ -1,12 +1,15 @@
-import {useRef} from "react";
+import { useRef } from "react";
 import Container from "../../components/container/Container";
 import { useLoaderData } from "react-router";
 import useAuthContext from "../../hooks/useAuthContext";
+import useAxios from "../../hooks/useAxios";
+import toast from "react-hot-toast";
 
 const PetSuppliesDetails = () => {
   const productDetails = useLoaderData();
   const modalRef = useRef();
   const { user } = useAuthContext();
+  const axiosHook = useAxios();
   const {
     _id: productId,
     name: productName,
@@ -24,29 +27,39 @@ const PetSuppliesDetails = () => {
 
   const handleOrderDetails = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
+    const buyerName = e.target.name.value;
     const email = e.target.email.value;
     const productId = e.target.productId.value;
     const productName = e.target.productName.value;
-    const quantity = e.target.quantity.value;
+    const quantity = category === "Pets" ? 1 : parseInt(e.target.quantity.value);
     const price = e.target.price.value;
     const address = e.target.address.value;
-    const date = e.target.date.value;
+    const dateValue = e.target.date.value;
+    const [year, month, day] = dateValue.split("-");
+    const date = `${day}-${month}-${year}`;
     const phone = e.target.phone.value;
-    const notes = e.target.notes.value;
+    const additionalNotes = e.target.notes.value;
 
-    console.log(
-      name,
+    const orderInfo = {
+      buyerName,
       email,
       productId,
       productName,
-      quantity,
-      price,
+      quantity: parseInt(quantity),
+      price: parseInt(price),
       address,
       date,
       phone,
-      notes
-    );
+      additionalNotes,
+    };
+
+    axiosHook.post("/orders", orderInfo).then((data) => {
+      if (data.data.insertedId) {
+        toast.success("Your order request successfull");
+        e.target.reset();
+        modalRef.current.close();
+      }
+    });
   };
 
   return (
@@ -80,10 +93,10 @@ const PetSuppliesDetails = () => {
                 <dialog
                   ref={modalRef}
                   id="my_modal_5"
-                  className="modal modal-bottom sm:modal-middle"
+                  className="modal modal-bottom sm:modal-middle px-2"
                 >
-                  <div className="modal-box">
-                    <h3 className="text-5xl font-bold text-primary text-center">
+                  <div className="modal-box ">
+                    <h3 className="text-5xl font-bold text-primary text-center pb-8">
                       Order Form
                     </h3>
 
@@ -96,7 +109,7 @@ const PetSuppliesDetails = () => {
                             <fieldset className="fieldset space-y-4 text-lg">
                               {/* User Name */}
                               <label className="label font-semibold">
-                                User Name
+                                Buyer Name
                               </label>
                               <input
                                 type="text"

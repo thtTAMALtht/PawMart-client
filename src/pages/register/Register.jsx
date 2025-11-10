@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuthContext from "../../hooks/useAuthContext";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -10,6 +10,7 @@ const Register = () => {
     useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const axiosHook = useAxios();
 
   const handleGoogleSignIn = () => {
@@ -17,7 +18,7 @@ const Register = () => {
       .then((result) => {
         setLoading(false);
       toast.success("Google SignIn Successful");
-      navigate("/");
+      
         const userInfo = {
           name: result.user.displayName,
           email: result.user.email,
@@ -35,7 +36,7 @@ const Register = () => {
             console.log(error);
           });
         setLoading(false);
-        navigate("/");
+        navigate(location.state || "/")
       })
       .catch((error) => {
         toast.error(error.message);

@@ -5,7 +5,7 @@ import PetHeroes from '../../components/petHeroes/PetHeroes';
 
 const Home = () => {
     return (
-        <div className='bg-[#f9f9f9]'>
+        <div>
             <Banner></Banner>
             <WhyAdopt></WhyAdopt>
             <PetHeroes></PetHeroes>

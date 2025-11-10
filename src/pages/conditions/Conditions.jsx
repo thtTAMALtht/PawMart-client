@@ -2,8 +2,8 @@ import React from 'react';
 
 const Conditions = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6 md:px-20 lg:px-40">
-      <div className="max-w-5xl mx-auto bg-white shadow-md rounded-lg p-8">
+    <div className="min-h-screen  py-12 px-6 md:px-20 lg:px-40">
+      <div className="max-w-5xl mx-auto bg-white border border-gray-100 shadow-md rounded-lg p-8">
         <h1 className="text-4xl text-center font-bold text-[#113F67] mb-6">
           Terms & Conditions
         </h1>

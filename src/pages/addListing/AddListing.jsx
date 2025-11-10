@@ -12,13 +12,15 @@ const AddListing = () => {
   const handleAddListing = (e) => {
     e.preventDefault();
 
-    const form = e.target;
-    const name = form.name.value;
-    const price = form.price.value;
-    const location = form.location.value;
-    const description = form.description.value;
-    const image = form.image.value;
-    const date = form.date.value;
+   
+    const name = e.target.name.value;
+    const price = e.target.price.value;
+    const location = e.target.location.value;
+    const description = e.target.description.value;
+    const image = e.target.image.value;
+    const dateValue = e.target.date.value;
+    const [year, month, day] = dateValue.split("-");
+    const date = `${day}-${month}-${year}`;
 
     const listingData = {
       name,
@@ -36,7 +38,7 @@ const AddListing = () => {
     axiosHook.post("/listings", listingData).then((res) => {
       if (res.data.insertedId) {
         toast.success("Listing added successfully!");
-        form.reset();
+        e.target.reset();
       }
     });
   };

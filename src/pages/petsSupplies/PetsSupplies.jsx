@@ -25,30 +25,73 @@ const PetsSupplies = () => {
     });
   }
 
-  return (
-    <div className="pt-28 px-4 md:px-8 lg:px-16 space-y-6">
-      <div className="flex justify-between items-center">
-        <h3 className="text-5xl font-bold text-primary">Pets & Supplies</h3>
+  const handleSearch = (e)=>{
+    e.preventDefault()
+    const search = e.target.seacrh.value;
+    console.log(search);
+  }
 
+
+
+  return (
+    <div className="pt-20 px-4 md:px-8 lg:px-16 space-y-6">
+      <div>
+        <h3 className="text-5xl font-bold text-center text-primary">
+          Pets & Supplies
+        </h3>
+      </div>
+
+      <div className="flex justify-between items-center">
+        {/* search product */}
+        <form onSubmit={handleSearch} className="flex items-center">
+          <label className="input rounded-full">
+            <svg
+              className="h-[1em] opacity-50"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </g>
+            </svg>
+            <input
+              type="search"
+              name="search"
+              className="placeholder-gray-400"
+              placeholder="Search your product"
+            />
+          </label>
+          <button className="btn ml-1 btn-primary rounded-full">Search</button>
+        </form>
+        {/* category */}
+        <div>
+          <select
+            className="select select-bordered focus:outline-none focus:ring-0"
+            value={filterCategory}
+            onChange={(e) => setFilterCategory(e.target.value)}
+          >
+            <option value="">All Categories</option>
+            <option value="Pets">Pets</option>
+            <option value="Food">Food</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Care Products">Care Products</option>
+          </select>
+        </div>
         {/* Category Filter */}
-        <select
-          className="select select-bordered focus:outline-none focus:ring-0"
-          value={filterCategory}
-          onChange={(e) => setFilterCategory(e.target.value)}
-        >
-          <option value="">All Categories</option>
-          <option value="Pets">Pets</option>
-          <option value="Food">Food</option>
-          <option value="Accessories">Accessories</option>
-          <option value="Care Products">Care Products</option>
-        </select>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
         {filteredListings.map((listing) => (
           <div
             key={listing._id}
-            className="card bg-base-100 p-3 shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden"
+            className="card bg-base-100 p-3 shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden border border-gray-100"
           >
             <figure>
               <img

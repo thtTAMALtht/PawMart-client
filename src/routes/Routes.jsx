@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/pets-supplies-details/:id',
-        Component : PetSuppliesDetails,
+        element : <PrivateRoute><PetSuppliesDetails></PetSuppliesDetails></PrivateRoute>,
         loader : ({params})=>fetch(`http://localhost:5000/listings/${params.id}`)
       },
       {
