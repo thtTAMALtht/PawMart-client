@@ -28,9 +28,7 @@ const PetsSupplies = () => {
   return (
     <div className="pt-28 px-4 md:px-8 lg:px-16 space-y-6">
       <div className="flex justify-between items-center">
-        <h3 className="text-5xl font-bold text-primary">
-          Pets & Supplies
-        </h3>
+        <h3 className="text-5xl font-bold text-primary">Pets & Supplies</h3>
 
         {/* Category Filter */}
         <select
@@ -46,24 +44,23 @@ const PetsSupplies = () => {
         </select>
       </div>
 
-     
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
         {filteredListings.map((listing) => (
           <div
             key={listing._id}
-            className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden"
+            className="card bg-base-100 p-3 shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden"
           >
             <figure>
               <img
                 src={listing.image}
                 alt={listing.name}
-                className="h-48 w-full object-cover"
+                className="h-60 w-full object-cover"
               />
             </figure>
             <div className="card-body">
-              <h3 className="card-title">{listing.name}</h3>
+              <h3 className="card-title">Name : {listing.name}</h3>
               <p className="text-sm text-gray-500">{listing.category}</p>
-              <p className="text-sm">{listing.location}</p>
+              <p className="text-sm">Location : {listing.location}</p>
               <p className="font-semibold text-lg">
                 {listing.category === "Pets"
                   ? "Free Adoption"

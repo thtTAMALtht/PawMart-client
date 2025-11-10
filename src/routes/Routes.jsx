@@ -12,12 +12,14 @@ import Conditions from "../pages/conditions/Conditions";
 import ErrorPage from "../pages/errorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import PetSuppliesDetails from "../pages/petSuppliesDetails/PetSuppliesDetails";
+import LoadingSpinner from "../components/loadingSpinner/LoadingSpinner";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
     errorElement : <ErrorPage></ErrorPage>,
+    hydrateFallbackElement : <LoadingSpinner></LoadingSpinner>,
     children: [
       {
         index: true,
