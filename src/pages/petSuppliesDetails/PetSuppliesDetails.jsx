@@ -31,7 +31,8 @@ const PetSuppliesDetails = () => {
     const email = e.target.email.value;
     const productId = e.target.productId.value;
     const productName = e.target.productName.value;
-    const quantity = category === "Pets" ? 1 : parseInt(e.target.quantity.value);
+    const quantity =
+      category === "Pets" ? 1 : parseInt(e.target.quantity.value);
     const price = e.target.price.value;
     const address = e.target.address.value;
     const dateValue = e.target.date.value;
@@ -73,7 +74,7 @@ const PetSuppliesDetails = () => {
           </div>
           <div className="card bg-base-100 w-full shadow-sm p-4 space-y-4">
             <figure className="">
-              <img src={image} className="rounded-xl w-full" />
+              <img src={image} className="rounded-xl h-96" />
             </figure>
             <div className="space-y-4">
               <h2 className="card-title">Name : {productName}</h2>

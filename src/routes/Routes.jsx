@@ -13,6 +13,7 @@ import ErrorPage from "../pages/errorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import PetSuppliesDetails from "../pages/petSuppliesDetails/PetSuppliesDetails";
 import LoadingSpinner from "../components/loadingSpinner/LoadingSpinner";
+import UpdateListing from "../pages/updateListing/UpdateListing";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
       {
         path: "/myListing",
         element : <PrivateRoute><MyListing></MyListing></PrivateRoute>
+      },
+      {
+        path: "/myListing/update/:id",
+        element : <PrivateRoute><UpdateListing></UpdateListing></PrivateRoute>,
+        loader : ({params})=>fetch(`http://localhost:5000/listings/${params.id}`)
       },
       {
         path: "/myOrders",

@@ -27,8 +27,11 @@ const PetsSupplies = () => {
 
   const handleSearch = (e)=>{
     e.preventDefault()
-    const search = e.target.seacrh.value;
-    console.log(search);
+    const searchValue = e.target.search.value;
+    axiosHook(`/search?search=${searchValue}`)
+    .then(data=>{
+      console.log(data.data);
+    })
   }
 
 
