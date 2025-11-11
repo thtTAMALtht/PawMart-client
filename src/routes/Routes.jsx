@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: '/pets-supplies-details/:id',
         element : <PrivateRoute><PetSuppliesDetails></PetSuppliesDetails></PrivateRoute>,
-        loader : ({params})=>fetch(`http://localhost:5000/listings/${params.id}`)
+        loader : ({params})=>fetch(`https://paw-mart-server-sigma.vercel.app/listings/${params.id}`)
       },
       {
         path: '/addListing',
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       {
         path: "/myListing/update/:id",
         element : <PrivateRoute><UpdateListing></UpdateListing></PrivateRoute>,
-        loader : ({params})=>fetch(`http://localhost:5000/listings/${params.id}`)
+        loader : ({params})=>fetch(`https://paw-mart-server-sigma.vercel.app/listings/${params.id}`)
       },
       {
         path: "/myOrders",

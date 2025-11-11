@@ -82,7 +82,7 @@ const MyListing = () => {
                   <td>{listing.location}</td>
                   <td>{listing.description.slice(0, 18)}....</td>
                   <td>
-                    <img src={listing.image} alt="" className="w-20" />
+                    <img src={listing.image} alt="" className="w-20 h-15" />
                   </td>
                   <td className="flex flex-col items-center justify-center gap-2 lg:flex-row">
                     <Link to={`/myListing/update/${listing._id}`}  className="btn btn-sm btn-outline btn-primary">

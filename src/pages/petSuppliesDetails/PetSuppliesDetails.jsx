@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Container from "../../components/container/Container";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import useAuthContext from "../../hooks/useAuthContext";
 import useAxios from "../../hooks/useAxios";
 import toast from "react-hot-toast";
@@ -10,6 +10,7 @@ const PetSuppliesDetails = () => {
   const modalRef = useRef();
   const { user } = useAuthContext();
   const axiosHook = useAxios();
+  const navigate = useNavigate();
   const {
     _id: productId,
     name: productName,
@@ -59,6 +60,8 @@ const PetSuppliesDetails = () => {
         toast.success("Your order request successfull");
         e.target.reset();
         modalRef.current.close();
+        navigate("/myOrders")
+
       }
     });
   };

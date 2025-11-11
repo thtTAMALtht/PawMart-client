@@ -11,7 +11,7 @@ const LatestListingsCard = ({ latest }) => {
         <img
           src={latest.image}
           alt={latest.name}
-          className="h-60 w-full object-cover"
+          className="h-72 w-full object-cover"
         />
       </figure>
       <div className="space-y-3">

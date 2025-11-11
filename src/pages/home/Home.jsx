@@ -5,7 +5,7 @@ import PetHeroes from "../../components/petHeroes/PetHeroes";
 import CategoryCards from "../categoryCards/CategoryCards";
 import LatestListings from "../latestListings/LatestListings";
 
-const latestListingsPromise = fetch('http://localhost:5000/latest-listings').then(res => res.json());
+const latestListingsPromise = fetch('https://paw-mart-server-sigma.vercel.app/latest-listings').then(res => res.json());
 
 const Home = () => {
   return (

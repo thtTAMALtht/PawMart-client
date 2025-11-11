@@ -68,6 +68,7 @@ const MyOrders = () => {
               <tr>
                 <th>SL</th>
                 <th>BuyerName</th>
+                <th>Pet/Product</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Address</th>
@@ -81,6 +82,7 @@ const MyOrders = () => {
                 <tr key={order._id}>
                   <td>{index + 1}</td>
                   <td className="whitespace-nowrap">{order.buyerName}</td>
+                  <td className="whitespace-nowrap">{order.productName}</td>
                   <td>৳ {order.price}</td>
                   <td>{order.quantity}</td>
                   <td className="whitespace-normal wrap-break">
