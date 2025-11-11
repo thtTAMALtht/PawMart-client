@@ -58,7 +58,7 @@ const PetHeroes = () => {
           ))}
         </div>
 
-        <button className="mt-12 bg-[#4388C9] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#dd6c20] hover:shadow-lg transition-all duration-300 cursor-pointer">
+        <button className="mt-12 bg-[#4388C9] text-white  btn btn-lg rounded-lg font-semibold hover:bg-[#dd6c20] hover:shadow-lg transition-all duration-300 cursor-pointer">
           Read More Success Stories
         </button>
       </div>

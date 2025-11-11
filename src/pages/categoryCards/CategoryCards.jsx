@@ -10,20 +10,25 @@ const categories = [
 
 const CategoryCards = () => {
   return (
-    <Container>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
-        {categories.map((category) => (
-          <Link
-            key={category.name}
-            to={`/category-filtered-product/${category.name}`}
-            className="bg-primary text-white rounded-lg p-6 text-center
+    <section className="py-24">
+      <Container>
+        <h3 className="text-5xl font-bold text-center text-primary mb-16">
+          Categories
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+          {categories.map((category) => (
+            <Link
+              key={category.name}
+              to={`/category-filtered-product/${category.name}`}
+              className="bg-primary text-white rounded-lg p-6 text-center
           font-semibold hover:opacity-90 transition"
-          >
-            🐶 {category.label}
-          </Link>
-        ))}
-      </div>
-    </Container>
+            >
+              🐶 {category.label}
+            </Link>
+          ))}
+        </div>
+      </Container>
+    </section>
   );
 };
 

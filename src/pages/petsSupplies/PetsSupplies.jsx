@@ -106,7 +106,7 @@ const PetsSupplies = () => {
                   className="h-60 w-full object-cover"
                 />
               </figure>
-              <div className="card-body">
+              <div className="space-y-3">
                 <h3 className="card-title">Name : {listing.name}</h3>
                 <p className="text-sm text-gray-500">{listing.category}</p>
                 <p className="text-sm">Location : {listing.location}</p>
