@@ -29,7 +29,7 @@ const heroes = [
 
 const PetHeroes = () => {
   return (
-    <section className="pb-24">
+    <section className="pb-28">
       <div className="container mx-auto text-center px-5">
         <h2 className="text-2xl md:text-5xl  font-bold mb-6">
           Meet Our <span className="text-[#dd6c20]">Pet</span>
@@ -63,7 +63,7 @@ const PetHeroes = () => {
           ))}
         </div>
 
-        <button className="mt-12 bg-[#4388C9] text-white  btn btn-md md:btn-lg rounded-lg font-semibold hover:bg-[#dd6c20] hover:shadow-lg transition-all duration-300 cursor-pointer">
+        <button className="mt-12 bg-[#4388C9] text-white  btn btn-md rounded-lg font-semibold hover:bg-[#dd6c20] hover:shadow-lg transition-all duration-300 cursor-pointer">
           Read More Success Stories
         </button>
       </div>

@@ -33,13 +33,14 @@ const AddListing = () => {
       email: user?.email,
     };
 
-    console.log(listingData);
+  
 
     axiosHook.post("/listings", listingData).then((res) => {
       if (res.data.insertedId) {
         toast.success("Listing added successfully!");
         e.target.reset();
-        navigate("/myListing");
+        navigate("/", { replace: true });
+        window.location.reload();
       }
     });
   };

@@ -4,7 +4,7 @@ import Container from "../container/Container";
 
 const WhyAdopt = () => {
   return (
-    <section className="py-24">
+    <section className="py-28">
       <Container>
         <div className="text-center px-5">
           <h2 className="text-xl md:text-5xl font-bold mb-6">

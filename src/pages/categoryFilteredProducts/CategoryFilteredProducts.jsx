@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router";
 import Container from "../../components/container/Container";
+import toast from "react-hot-toast";
 
 const CategoryFilteredProducts = () => {
   const { categoryName } = useParams();
@@ -12,7 +13,7 @@ const CategoryFilteredProducts = () => {
   useEffect(() => {
     axiosHook(`/listings?category=${categoryName}`)
       .then((res) => setProducts(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   }, [axiosHook, categoryName]);
 
   return (

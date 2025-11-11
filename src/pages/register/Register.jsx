@@ -34,7 +34,7 @@ const Register = () => {
             // }
           })
           .catch((error) => {
-            console.log(error);
+            toast.error(error.message);
           });
         setLoading(false);
         navigate(location.state || "/");

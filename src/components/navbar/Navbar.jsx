@@ -130,16 +130,16 @@ const Navbar = () => {
                   </ul>
                 </div>
               ) : (
-                <div className="navbar-end flex  gap-2">
+                <div className="navbar-end flex items-center gap-2">
                   <Link
                     to="/auth/login"
-                    className="btn btn-sm shadow-none btn-primary"
+                    className="btn btn-sm shadow-none btn-primary inline-flex items-center"
                   >
                     Login
                   </Link>
                   <Link
                     to="/auth/register"
-                    className="btn btn-sm shadow-none btn-secondary mr-2 hidden md:block"
+                    className="btn btn-sm shadow-none btn-secondary mr-2 hidden md:inline-flex items-center"
                   >
                     Register
                   </Link>

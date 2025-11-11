@@ -30,7 +30,7 @@ const googleSignIn = ()=>{
 //currently signed-in user
 useEffect(()=>{
     const cleanUpListener = onAuthStateChanged(auth,(currentUser)=>{
-        console.log(currentUser);
+        
         setUser(currentUser);
         setLoading(false);
     })
@@ -63,7 +63,7 @@ useEffect(()=>{
     updateUserProfile,
     loading,
     setLoading,
-    signOutUser
+    signOutUser,
   };
 
   return <AuthContext value={userInfo}>{children}</AuthContext>;

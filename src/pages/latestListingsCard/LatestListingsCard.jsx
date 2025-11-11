@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router";
 
 const LatestListingsCard = ({ latest }) => {
-  console.log(latest);
   return (
     <div
       key={latest._id}

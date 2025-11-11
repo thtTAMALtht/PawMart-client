@@ -2,19 +2,34 @@ import React, { useState, useEffect } from "react";
 
 import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router";
+import toast from "react-hot-toast";
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
+import { BarLoader } from "react-spinners";
 
 const PetsSupplies = () => {
   const [listings, setListings] = useState([]);
   const [filterCategory, setFilterCategory] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const axiosHook = useAxios();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     axiosHook
       .get("/listings")
       .then((res) => setListings(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message))
+      .finally(() => setLoading(false));
   }, [axiosHook]);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full min-h-screen text-[#2479C9] space-y-4">
+        <p className="text-lg font-semibold">Data is Loading......</p>
+        <BarLoader color="#2479C9" />
+      </div>
+    );
+  }
 
   let displayListings = searchResults.length > 0 ? searchResults : listings;
 
@@ -35,7 +50,7 @@ const PetsSupplies = () => {
 
     axiosHook(`/search?search=${searchValue}`)
       .then((data) => setSearchResults(data.data))
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   };
 
   return (
