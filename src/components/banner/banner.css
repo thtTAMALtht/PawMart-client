@@ -133,12 +133,15 @@
 
   /* Small screens (mobile) */
 
-  @media (max-width: 380px) {
-    .swiper-pagination-bullet{
-      display: none;
-    }
+  @media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
   }
-  
+
+ 
+}
+
    @media (max-width: 1480px) {
     .swiper {
       height: 100%;

@@ -26,9 +26,9 @@ const categories = [
 
 const CategoryCards = () => {
   return (
-    <section className="py-24">
+    <section className="py-14 md:py-24">
       <Container>
-        <h3 className="text-5xl font-bold text-center text-primary mb-6">
+        <h3 className="text-2xl md:text-5xl font-bold text-center text-primary mb-6">
           Categories
         </h3>
         <p className="max-w-3xl mx-auto text-center text-sm md:text-lg text-gray-400 mb-12">

@@ -50,7 +50,7 @@ const Banner = () => {
               className="w-full h-[450px] object-cover"
               alt="Pet Banner 1"
             />
-            <div className="banner-content mt-[-40px]">
+            <div className="banner-content mt-[-40px] hidden md:block">
               <h2>Find Your Furry Friend Today!</h2>
               <p className="text-gray-300">
                 From playful puppies to cuddly cats — explore a variety of
@@ -69,7 +69,7 @@ const Banner = () => {
               className="w-full h-[450px] object-cover"
               alt="Pet Banner 2"
             />
-            <div className="banner-content mt-[-40px]">
+            <div className="banner-content mt-[-40px] hidden md:block">
               <h2>Adopt, Don’t Shop — Give a Pet a Home.</h2>
               <p className="text-gray-300">
                 Every rescued pet gets a new chapter of life. Choose adoption
@@ -88,7 +88,7 @@ const Banner = () => {
               className="w-full h-[450px] object-cover"
               alt="Pet Banner 3"
             />
-            <div className="banner-content mt-[-40px]">
+            <div className="banner-content mt-[-40px] hidden md:block">
               <h2>Because Every Pet Deserves Love & Care.</h2>
               <p className="text-gray-300">
                 We help connect pets with kind-hearted people like you. Give a

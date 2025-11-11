@@ -52,7 +52,7 @@ const MyListing = () => {
     <Container>
       <title>PawMart | My Listing</title>
       <div className="py-16 space-y-12">
-        <h3 className="text-5xl font-bold text-primary text-center">
+        <h3 className="text-4xl md:text-5xl font-bold text-primary text-center">
           My Listing : {myListing.length}
         </h3>
         <div className="overflow-x-auto w-full">

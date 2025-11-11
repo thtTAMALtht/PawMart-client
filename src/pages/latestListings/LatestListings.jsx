@@ -8,7 +8,7 @@ const LatestListings = ({ latestListingsPromise }) => {
   return (
     <Container>
       <div>
-        <h3 className="text-5xl font-bold text-center text-primary mb-6">
+        <h3 className="text-2xl md:text-5xl font-bold text-center text-primary mb-6">
           Latest Listings
         </h3>
         <p className="max-w-3xl mx-auto text-center text-sm md:text-lg text-gray-400 mb-12">
@@ -25,7 +25,7 @@ const LatestListings = ({ latestListingsPromise }) => {
           ))}
         </div>
         <div className="text-center">
-          <Link to="/pets-supplies" className="mt-12 bg-[#4388C9] text-white btn btn-lg rounded-lg font-semibold hover:bg-[#dd6c20] hover:shadow-lg transition-all duration-300 cursor-pointer">
+          <Link to="/pets-supplies" className="mt-12 bg-[#4388C9] text-white rounded-lg font-semibold hover:bg-[#dd6c20] hover:shadow-lg transition-all duration-300 cursor-pointer  btn btn-md md:btn-lg">
             See More Listings
           </Link>
         </div>

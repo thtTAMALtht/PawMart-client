@@ -69,8 +69,8 @@ const Navbar = () => {
                 {links}
               </ul>
             </div>
-            <Link className="group flex items-center gap-2">
-              <img src={LogoImg} alt="logo" className="w-14" />
+            <Link className="group flex flex-col md:flex-row items-center gap-2">
+              <img src={LogoImg} alt="logo" className="w-14 hidden md:block" />
               <p className="text-3xl font-extrabold italic text-[#F76100] group-hover:text-[#4388C9]">
                 Paw
                 <span className="text-[#4388C9] group-hover:text-[#F76100]">
@@ -92,7 +92,7 @@ const Navbar = () => {
                   <div
                     tabIndex={0}
                     role="button"
-                    className="btn btn-ghost btn-circle avatar mr-16"
+                    className="btn btn-ghost btn-circle avatar mr-2 md:mr-16"
                   >
                     <div className="w-10 rounded-full border-2 border-[#4388C9]">
                       <img
@@ -130,7 +130,7 @@ const Navbar = () => {
                   </ul>
                 </div>
               ) : (
-                <div className="navbar-end flex gap-2">
+                <div className="navbar-end flex  gap-2">
                   <Link
                     to="/auth/login"
                     className="btn btn-sm shadow-none btn-primary"
@@ -139,7 +139,7 @@ const Navbar = () => {
                   </Link>
                   <Link
                     to="/auth/register"
-                    className="btn btn-sm shadow-none btn-secondary mr-2"
+                    className="btn btn-sm shadow-none btn-secondary mr-2 hidden md:block"
                   >
                     Register
                   </Link>

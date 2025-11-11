@@ -42,12 +42,12 @@ const PetsSupplies = () => {
     <div className="pt-20 px-4 md:px-8 lg:px-16 space-y-6">
       <title>PawMart | Pets & Supplies</title>
       <div>
-        <h3 className="text-5xl font-bold text-center text-primary">
+        <h3 className="text-4xl md:text-5xl font-bold text-center text-primary">
           Pets & Supplies
         </h3>
       </div>
 
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row gap-6 justify-between items-center">
         {/* search product */}
         <form onSubmit={handleSearch} className="flex items-center">
           <label className="input rounded-full">

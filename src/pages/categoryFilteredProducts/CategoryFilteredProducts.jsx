@@ -18,7 +18,7 @@ const CategoryFilteredProducts = () => {
   return (
     <section  className="py-24">
       <Container>
-        <h3 className="text-5xl font-bold text-center text-primary mb-16">
+        <h3 className="text-4xl md:text-5xl font-bold text-center text-primary mb-16">
           {categoryName} Products
         </h3>
 

@@ -49,7 +49,7 @@ const MyOrders = () => {
     <Container>
       <title>PawMart | My Orders</title>
       <div className="py-16 space-y-12">
-        <h3 className="text-5xl font-bold text-primary text-center">
+        <h3 className="text-4xl md:text-5xl font-bold text-primary text-center">
           My Orders : {myOrders.length}
         </h3>
         {/* Download */}

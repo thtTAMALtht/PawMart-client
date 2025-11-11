@@ -7,7 +7,7 @@ const WhyAdopt = () => {
     <section className="py-24">
       <Container>
         <div className="text-center px-5">
-          <h2 className="text-lg md:text-4xl font-bold mb-6">
+          <h2 className="text-xl md:text-5xl font-bold mb-6">
             Why Adopt from{" "}
             <span className="text-[#dd6c20]">
               <Typewriter
