@@ -4,6 +4,7 @@ import Footer from "../components/footer/Footer";
 import { Toaster } from "react-hot-toast";
 import useAuthContext from "../hooks/useAuthContext";
 import LoadingSpinner from "../components/loadingSpinner/LoadingSpinner";
+import ScrollToTop from "../components/scrollToTop/ScrollToTop";
 
 const RootLayout = () => {
   const { loading } = useAuthContext();
@@ -21,6 +22,7 @@ const RootLayout = () => {
       <Footer>
         <Footer></Footer>
       </Footer>
+      <ScrollToTop></ScrollToTop>
       <Toaster
         position="top-right"
         containerStyle={{

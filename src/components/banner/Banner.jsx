@@ -27,10 +27,13 @@ const Banner = () => {
         centeredSlides={true}
         slidesPerView={1}
         loop={true}
+   
         autoplay={{
-          delay: 1000000,
+          delay: 2500,
           disableOnInteraction: false,
+          pauseOnMouseEnter: false,
         }}
+        speed={1000}
         pagination={{
           clickable: true,
         }}
@@ -47,9 +50,9 @@ const Banner = () => {
               className="w-full h-[450px] object-cover"
               alt="Pet Banner 1"
             />
-            <div className="banner-content">
+            <div className="banner-content mt-[-40px]">
               <h2>Find Your Furry Friend Today!</h2>
-              <p>
+              <p className="text-gray-300">
                 From playful puppies to cuddly cats — explore a variety of
                 lovely pets waiting for a forever home. Make your family
                 complete with a new best friend.
@@ -66,9 +69,9 @@ const Banner = () => {
               className="w-full h-[450px] object-cover"
               alt="Pet Banner 2"
             />
-            <div className="banner-content">
+            <div className="banner-content mt-[-40px]">
               <h2>Adopt, Don’t Shop — Give a Pet a Home.</h2>
-              <p>
+              <p className="text-gray-300">
                 Every rescued pet gets a new chapter of life. Choose adoption
                 and bring joy, love, and hope to an animal eager to be a part of
                 your family.
@@ -85,9 +88,9 @@ const Banner = () => {
               className="w-full h-[450px] object-cover"
               alt="Pet Banner 3"
             />
-            <div className="banner-content">
+            <div className="banner-content mt-[-40px]">
               <h2>Because Every Pet Deserves Love & Care.</h2>
-              <p>
+              <p className="text-gray-300">
                 We help connect pets with kind-hearted people like you. Give a
                 stray or abandoned pet a chance to feel loved, safe, and truly
                 cared for.

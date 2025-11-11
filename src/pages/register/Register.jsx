@@ -128,6 +128,7 @@ const Register = () => {
 
   return (
     <div className="flex justify-center py-24">
+      <title>PawMart | Register</title>
       <div className=" card bg-base-100 w-full border border-gray-200 max-w-2xl shrink-0 shadow-2xl">
         <div className="card-body">
           <h1 className="text-5xl font-bold text-center py-2 text-secondary">

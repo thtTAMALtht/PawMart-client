@@ -31,17 +31,21 @@ const PetHeroes = () => {
   return (
     <section className="pb-24">
       <div className="container mx-auto text-center px-5">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
           Meet Our <span className="text-[#dd6c20]">Pet</span>
           <span className="text-[#4388C9]"> Heroes</span>
         </h2>
+        <p className="max-w-3xl mx-auto text-center text-sm md:text-lg text-gray-400 mb-12">
+          These amazing humans make rescuing & rehoming possible. Our Pet Heroes
+          dedicate their time, effort & hearts to give animals a second chance
+          at life.
+        </p>
 
         <div className="grid lg:grid-cols-3 gap-10">
           {heroes.map((hero) => (
             <div
               key={hero.id}
               className="p-5 rounded-xl bg-white shadow hover:shadow-lg hover:scale-103 transition-transform duration-800 border border-gray-100 hover:shadow-[#dd6c20]/10"
-              
             >
               <img
                 src={hero.img}
@@ -49,7 +53,8 @@ const PetHeroes = () => {
                 className="w-full h-60 object-cover rounded-lg"
               />
               <h3 className="font-bold text-xl mt-4 text-gray-800">
-                <span className="text-[#dd6c20]">{hero.pet}</span> & <span className="text-primary">{hero.hero}</span>
+                <span className="text-[#dd6c20]">{hero.pet}</span> &{" "}
+                <span className="text-primary">{hero.hero}</span>
               </h3>
               <p className="text-gray-600 text-md leading-relaxed mt-3">
                 {hero.story}

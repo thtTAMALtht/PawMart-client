@@ -84,6 +84,7 @@ const handleSignIn = (e) => {
 
   return (
     <div className="flex justify-center py-24">
+      <title>PawMart | Login</title>
       <div className=" card bg-base-100 w-full border border-gray-200 max-w-2xl shrink-0 shadow-md">
         <div className="card-body">
           <h1 className="text-5xl font-bold text-primary text-center py-2">

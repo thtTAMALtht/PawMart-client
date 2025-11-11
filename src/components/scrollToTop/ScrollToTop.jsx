@@ -3,13 +3,10 @@ import { useState, useEffect } from "react";
 
 const ScrollToTop = () => {
   const [visible, setVisible] = useState(false);
+
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setVisible(true);
-      } else {
-        setVisible(false);
-      }
+      setVisible(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", toggleVisibility);
@@ -17,10 +14,7 @@ const ScrollToTop = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -28,21 +22,7 @@ const ScrollToTop = () => {
       {visible && (
         <button
           onClick={scrollToTop}
-          className="hidden md:block cursor-pointer text-white"
-          style={{
-            position: "fixed",
-            bottom: "40px",
-            right: "40px",
-            backgroundColor: "#F76100",
-            border: "none",
-            borderRadius: "50%",
-            padding: "10px",
-            cursor: "pointer",
-            color: "white",
-            fontSize: "24px",
-            zIndex: 1000,
-            boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
-          }}
+          className="hidden md:block fixed bottom-10 right-10 bg-[#4388C9] hover:bg-[#F76100] text-white p-2 rounded-full shadow-lg text-2xl cursor-pointer transition-all duration-700"
           aria-label="Scroll to top"
         >
           <MdArrowUpward />

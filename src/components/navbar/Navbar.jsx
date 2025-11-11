@@ -79,7 +79,7 @@ const Navbar = () => {
               </p>
             </Link>
           </div>
-          <div className="navbar-center hidden lg:flex text-secondary ">
+          <div className="navbar-center hidden lg:flex text-primary ">
             <ul className="flex gap-6 text-lg font-medium">{links}</ul>
           </div>
 
@@ -94,7 +94,7 @@ const Navbar = () => {
                     role="button"
                     className="btn btn-ghost btn-circle avatar mr-16"
                   >
-                    <div className="w-10 rounded-full">
+                    <div className="w-10 rounded-full border-2 border-[#4388C9]">
                       <img
                         id="user-avatar"
                         alt={user.displayName}
@@ -139,7 +139,7 @@ const Navbar = () => {
                   </Link>
                   <Link
                     to="/auth/register"
-                    className="btn btn-sm shadow-none btn-secondary"
+                    className="btn btn-sm shadow-none btn-secondary mr-2"
                   >
                     Register
                   </Link>

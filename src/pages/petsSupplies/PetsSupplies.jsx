@@ -40,6 +40,7 @@ const PetsSupplies = () => {
 
   return (
     <div className="pt-20 px-4 md:px-8 lg:px-16 space-y-6">
+      <title>PawMart | Pets & Supplies</title>
       <div>
         <h3 className="text-5xl font-bold text-center text-primary">
           Pets & Supplies
@@ -97,7 +98,7 @@ const PetsSupplies = () => {
           displayListings.map((listing) => (
             <div
               key={listing._id}
-              className="card bg-base-100 p-3 shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden border border-gray-100"
+              className="card bg-base-100 p-3 shadow-md  transition-shadow rounded-lg overflow-hidden border border-gray-200 hover:shadow-xl hover:shadow-[#dd6c20]/10"
             >
               <figure>
                 <img
@@ -107,7 +108,7 @@ const PetsSupplies = () => {
                 />
               </figure>
               <div className="space-y-3">
-                <h3 className="card-title">Name : {listing.name}</h3>
+                <h3 className="card-title mt-2">Name : {listing.name}</h3>
                 <p className="text-sm text-gray-500">{listing.category}</p>
                 <p className="text-sm">Location : {listing.location}</p>
                 <p className="font-semibold text-lg">

@@ -47,6 +47,7 @@ const AddListing = () => {
   return (
     <Container>
       <section className="space-y-8 py-16">
+      <title>PawMart | Add Listing</title>
         <h3 className="text-5xl font-bold text-primary text-center">
           Add Listing
         </h3>

@@ -1,25 +1,57 @@
+:root {
+  --swiper-theme-color: #F76100;
+}
+
+/* Arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #2479C9 !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #F76100 !important;
+}
+
+
+
 .swiper {
   width: 100%;
   height: 750px;
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #444;
-
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.swiper-slide::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 2;
 }
 
 .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
-  
+  object-fit:cover;
 }
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #2479C9;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background: #F76100;
+  opacity: 1;
+}
+
+
+
 
 .autoplay-progress {
   position: absolute;
@@ -32,7 +64,7 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: var(--swiper-theme-color);
+  color: #ffffff !important;
 }
 
 .autoplay-progress svg {
@@ -58,31 +90,46 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: white;
-  max-width: 600px;
+  color: #fff;
   width: 90%;
-  padding: 20px;
+  max-width: 900px;
+  padding: 25px 35px;
+  
+  /* ✨ Modern Eye-Catching Design ✨ */
+  /* background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(0, 0, 0, 0.45)
+  );
+   */
+  border-radius: 14px;
+  border: 1px solid rgba(36, 121, 201, 0.15);
+  box-shadow: 0 8px 40px rgba(255,145,77,0.35);
+  z-index: 3;
+  animation: fadeUp 1.2s ease forwards;
 }
 
 .banner-content h2 {
-  font-size: 2.4rem;
-  font-weight: 800;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  font-size: 2.6rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ff914d, #ffdd57);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
 }
+
 
 .banner-content p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
-  background: rgba(0,0,0,0.45);
-  display: inline-block;
-  padding: 8px 18px;
-  border-radius: 8px;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  text-shadow: none;
 }
 
-
-
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translate(-50%, -40%); }
+  100% { opacity: 1; transform: translate(-50%, -50%); }
+}
 
   /* Small screens (mobile) */
 

@@ -3,8 +3,9 @@ import React from 'react';
 const Conditions = () => {
   return (
     <div className="min-h-screen  py-12 px-6 md:px-20 lg:px-40">
+      <title>PawMart | Terms & Conditions</title>
       <div className="max-w-5xl mx-auto bg-white border border-gray-100 shadow-md rounded-lg p-8">
-        <h1 className="text-4xl text-center font-bold text-[#113F67] mb-6">
+        <h1 className="text-4xl text-center font-bold text-[#4388C9] mb-6">
           Terms & Conditions
         </h1>
 
@@ -16,7 +17,7 @@ const Conditions = () => {
         <div className="space-y-8 text-gray-700 leading-relaxed">
           {/* Section 1 */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#113F67] mb-2">
+            <h2 className="text-2xl font-semibold text-[#4388C9] mb-2">
               1. General Overview
             </h2>
             <p>
@@ -28,7 +29,7 @@ const Conditions = () => {
 
           {/* Section 2 */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#113F67] mb-2">
+            <h2 className="text-2xl font-semibold text-[#4388C9] mb-2">
               2. User Responsibilities
             </h2>
             <ul className="list-disc pl-6 space-y-2">
@@ -41,7 +42,7 @@ const Conditions = () => {
 
           {/* Section 3 */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#113F67] mb-2">
+            <h2 className="text-2xl font-semibold text-[#4388C9] mb-2">
               3. Transactions & Payments
             </h2>
             <p>
@@ -53,7 +54,7 @@ const Conditions = () => {
 
           {/* Section 4 */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#113F67] mb-2">
+            <h2 className="text-2xl font-semibold text-[#4388C9] mb-2">
               4. Content & Listings
             </h2>
             <p>
@@ -65,7 +66,7 @@ const Conditions = () => {
 
           {/* Section 5 */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#113F67] mb-2">
+            <h2 className="text-2xl font-semibold text-[#4388C9] mb-2">
               5. Liability Disclaimer
             </h2>
             <p>
@@ -78,7 +79,7 @@ const Conditions = () => {
 
           {/* Section 6 */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#113F67] mb-2">
+            <h2 className="text-2xl font-semibold text-[#4388C9] mb-2">
               6. Updates to Terms
             </h2>
             <p>

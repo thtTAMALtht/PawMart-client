@@ -32,7 +32,7 @@ const Footer = () => {
             id="contact"
             className="col-span-12 lg:col-span-4 text-white space-y-4"
           >
-            <h3 className="text-xl font-semibold tracking-widest text-[#F76100]">
+            <h3 className="text-xl font-semibold tracking-widest text-[#4388C9]">
               Contact Info
             </h3>
             <p>Email: support@pawmart.com</p>
@@ -44,7 +44,7 @@ const Footer = () => {
           </div>
 
           <div className="col-span-12 lg:col-span-3 text-white lg:flex flex-col   space-y-4">
-            <h3 className="text-xl tracking-widest font-bold text-[#F76100]">
+            <h3 className="text-xl tracking-widest font-bold text-[#4388C9]">
               Get in touch
             </h3>
             <ul className="flex justify-center gap-5 text-lg">

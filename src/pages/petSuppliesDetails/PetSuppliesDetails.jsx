@@ -72,9 +72,9 @@ const PetSuppliesDetails = () => {
               Pets & Supplies Details
             </h3>
           </div>
-          <div className="card bg-base-100 w-full shadow-sm p-4 space-y-4">
+          <div className="card bg-base-100  max-w-2xl mx-auto shadow-sm p-4 space-y-4 border border-gray-100">
             <figure className="">
-              <img src={image} className="rounded-xl h-96" />
+              <img src={image} className="rounded-xl h-96 w-full" />
             </figure>
             <div className="space-y-4">
               <h2 className="card-title">Name : {productName}</h2>
@@ -146,7 +146,7 @@ const PetSuppliesDetails = () => {
 
                               {/* Product Name */}
                               <label className="label font-semibold">
-                                Product Name
+                                Product / Pet Name
                               </label>
                               <input
                                 type="text"
