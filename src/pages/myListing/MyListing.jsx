@@ -4,20 +4,35 @@ import useAxios from "../../hooks/useAxios";
 import Container from "../../components/container/Container";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import toast from "react-hot-toast";
+import { BarLoader } from "react-spinners";
 
 const MyListing = () => {
   const axiosHook = useAxios();
   const { user } = useAuthContext();
   const [myListing, setMyListing] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     if (user?.email) {
       axiosHook.get(`/listings?email=${user?.email}`).then((data) => {
         setMyListing(data.data);
-      });
+      })
+      .catch((err) => toast.error(err.message))
+      .finally(() => setLoading(false));
     }
+    
   }, [user, axiosHook]);
 
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full min-h-screen text-[#2479C9] space-y-4">
+        <p className="text-lg font-semibold">Data is Loading</p>
+        <BarLoader color="#2479C9" />
+      </div>
+    );
+  }
   //delete
   const handleDelete = (id) => {
     Swal.fire({

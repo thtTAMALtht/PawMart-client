@@ -4,18 +4,30 @@ import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router";
 import Container from "../../components/container/Container";
 import toast from "react-hot-toast";
+import { BarLoader } from "react-spinners";
 
 const CategoryFilteredProducts = () => {
   const { categoryName } = useParams();
   const axiosHook = useAxios();
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     axiosHook(`/listings?category=${categoryName}`)
       .then((res) => setProducts(res.data))
-      .catch((err) => toast.error(err.message));
+      .catch((err) => toast.error(err.message))
+      .finally(() => setLoading(false));
   }, [axiosHook, categoryName]);
 
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full min-h-screen text-[#2479C9] space-y-4">
+        <p className="text-lg font-semibold">Data is Loading</p>
+        <BarLoader color="#2479C9" />
+      </div>
+    );
+  }
   return (
     <section  className="py-24">
       <Container>
@@ -23,7 +35,7 @@ const CategoryFilteredProducts = () => {
           {categoryName} Products
         </h3>
 
-        {products.length === 0 ? (
+        {!loading && products.length === 0 ? (
           <p className="text-center text-gray-500 text-lg">
             No {categoryName} Products Available!
           </p>

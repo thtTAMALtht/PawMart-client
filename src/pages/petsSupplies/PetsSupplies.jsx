@@ -26,7 +26,7 @@ const PetsSupplies = () => {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center w-full min-h-screen text-[#2479C9] space-y-4">
-        <p className="text-lg font-semibold">Data is Loading......</p>
+        <p className="text-lg font-semibold">Data is Loading</p>
         <BarLoader color="#2479C9" />
       </div>
     );

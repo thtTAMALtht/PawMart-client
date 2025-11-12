@@ -67,8 +67,6 @@ const Login = () => {
       })
       .catch((error) => {
         setLoading(false);
-        toast.error(error.message);
-
         if (error.code === "auth/invalid-credential") {
           toast.error("Email or password doesn't match");
         } else if (error.code === "auth/invalid-email") {

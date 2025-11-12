@@ -4,19 +4,34 @@ import useAxios from "../../hooks/useAxios";
 import useAuthContext from "../../hooks/useAuthContext";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
+import toast from "react-hot-toast";
+import { BarLoader } from "react-spinners";
 
 const MyOrders = () => {
   const axiosHook = useAxios();
   const { user } = useAuthContext();
   const [myOrders, setMyOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     if (user?.email) {
       axiosHook.get(`/orders?email=${user?.email}`).then((data) => {
         setMyOrders(data.data);
-      });
+      })
+      .catch((err) => toast.error(err.message))
+      .finally(() => setLoading(false));
     }
   }, [axiosHook, user]);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full min-h-screen text-[#2479C9] space-y-4">
+        <p className="text-lg font-semibold">Data is Loading</p>
+        <BarLoader color="#2479C9" />
+      </div>
+    );
+  }
 
   const handleDownloadPDF = () => {
     const doc = new jsPDF();
