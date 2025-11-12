@@ -84,7 +84,7 @@ const MyListing = () => {
                   <td>
                     <img src={listing.image} alt="" className="w-20 h-15" />
                   </td>
-                  <td className="flex flex-col items-center justify-center gap-2 lg:flex-row">
+                  <td className="flex flex-col lg:mt-3 gap-2 lg:flex-row">
                     <Link to={`/myListing/update/${listing._id}`}  className="btn btn-sm btn-outline btn-primary">
                       Edit
                     </Link>
